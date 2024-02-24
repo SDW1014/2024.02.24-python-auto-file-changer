@@ -26,7 +26,7 @@ def set_file_title(file_path, new_title):
 
 # [".mp4", ".ts"]를 체크를 하고있음
 def extract_fileextension_checker(input_string):
-    matching_extensions = [".mp4", ".ts"]
+    matching_extensions = [".mp4", ".ts", ".smi", ".srt"]
     file_extension_match = re.search(r'\.\w+$', input_string)
     
     if file_extension_match:
