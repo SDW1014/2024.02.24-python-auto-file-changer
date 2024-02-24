@@ -19,12 +19,15 @@ def extract_and_modify_string(input_string):
 
 ## extract extract_fc2ppvnumber, extract_fileextension, extract_reducingmosic, extract_modelnumber을 전부 통합한 함수##
 def extract_perpect(input_string):
-    uncensored_present = 'Reducing Mosaic' in input_string
-    FC2PPV_present = 'FC2PPV' in input_string
+    uncensored_present  = 'Reducing Mosaic' in input_string
+    FC2PPV_present      = 'FC2PPV'          in input_string
     
-    suffix = ''
-    matches = ''
-    file_extension = ''
+    # 변수 모음 장소
+    # S : 시작
+    suffix = ''         # uncensored
+    matches = ''        # 파일 이름 
+    file_extension = '' # 확장자
+    # e : 끝
     
     if uncensored_present:
         suffix = extract_reducingmosic(uncensored_present)
@@ -33,6 +36,7 @@ def extract_perpect(input_string):
     else:
         matches = extract_modelnumber(input_string)
     
+    # 확장자
     file_extension = extract_fileextension(input_string)    
     
     modified_matches = [match[0] + suffix + file_extension + (match[1] if match[1] else '') for match in matches]
