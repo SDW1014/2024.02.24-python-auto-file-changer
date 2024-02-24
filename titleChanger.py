@@ -30,11 +30,11 @@ def extract_perpect(input_string):
     # e : 끝
     
     if uncensored_present:
-        suffix = extract_reducingmosic(uncensored_present)
+        suffix  =       extract_reducingmosic(uncensored_present)
     if FC2PPV_present: 
-        matches = extract_fc2ppvnumber(input_string)
+        matches =       extract_fc2ppvnumber(input_string)
     else:
-        matches = extract_modelnumber(input_string)
+        matches =       extract_modelnumber(input_string)
     
     # 확장자
     file_extension = extract_fileextension(input_string)    
