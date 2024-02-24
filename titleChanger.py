@@ -19,8 +19,11 @@ def extract_and_modify_string(input_string):
 
 ## extract extract_fc2ppvnumber, extract_fileextension, extract_reducingmosic, extract_modelnumber을 전부 통합한 함수##
 def extract_perpect(input_string):
+    # 변수 모음 장소 (예외 처리) 
+    # S : 시작
     uncensored_present  = 'Reducing Mosaic' in input_string
     FC2PPV_present      = 'FC2PPV'          in input_string
+    # e : 끝
     
     # 변수 모음 장소
     # S : 시작
@@ -29,18 +32,28 @@ def extract_perpect(input_string):
     file_extension = '' # 확장자
     # e : 끝
     
+    # suffix를 지정하는 구간 (Reducing Mosic) 
+    # S : 시작
     if uncensored_present:
-        suffix  =       extract_reducingmosic(uncensored_present)
+        suffix  =       extract_reducingmosic(uncensored_present)   # suffix를 extract하는 함수 (Reducing Mosic)
+    # e : 끝
+    
+    # matches를 지정하는 구간 
+    # S : 시작
     if FC2PPV_present: 
-        matches =       extract_fc2ppvnumber(input_string)
-    else:
-        matches =       extract_modelnumber(input_string)
+        matches =       extract_fc2ppvnumber(input_string)          # matches를 extract하는 함수 (fc2일 경우)
+    else:       
+        matches =       extract_modelnumber(input_string)           # matches를 extract하는 함수 (fc2가 아닐 경우)
+    # e : 끝
     
-    # 확장자
-    file_extension = extract_fileextension(input_string)    
     
+    # file_extension를 지정하는 구간 (확장자)
+    file_extension =    extract_fileextension(input_string)         # 확장자를 extract하는 함수
+    
+    # match + suffix + file_extension 를 완성 시키는 구간
     modified_matches = [match[0] + suffix + file_extension + (match[1] if match[1] else '') for match in matches]
     
+    # return하는 string로 이루어진 배열이라면 하나의 string으로 변경을 해주었다.
     result_string = ' '.join(modified_matches)
     
     return result_string
