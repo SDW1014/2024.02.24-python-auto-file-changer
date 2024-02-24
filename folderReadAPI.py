@@ -1,6 +1,9 @@
 import os
 import re
 
+# matching_extensions 변수는 mp4, ts, smi, srt등 사용할 확장자를 나타낸다.
+matching_extensions = [".mp4", ".ts", ".smi", ".srt"] 
+
 #directory_path를 기준으로 그 안에 있는 파일들의 정보를 전부 가져온다. 
 def list_files_in_directory(directory_path):
     entries = os.listdir(directory_path)
@@ -26,8 +29,7 @@ def set_file_title(file_path, new_title):
 
 # [".mp4", ".ts"]를 체크를 하고있음
 def extract_fileextension_checker(input_string):
-    matching_extensions = [".mp4", ".ts", ".smi", ".srt"]
-    file_extension_match = re.search(r'\.\w+$', input_string)
+    file_extension_match = re.search(r'\.\w+$', input_string) # 확장자를 매칭하는 패턴을 re을 사용해서 가져온다.
     
     if file_extension_match:
         extracted_extension = file_extension_match.group()  # 확장자 추출
