@@ -27,9 +27,9 @@ def extract_perpect(input_string):
     
     # 변수 모음 장소
     # S : 시작
-    suffix = ''         # uncensored
-    matches = ''        # 파일 이름 
-    file_extension = '' # 확장자
+    suffix          = ''    # 접두사 1번 : Reducing Mosic
+    matches         = ''    # 파일 이름 
+    file_extension  = ''    # 확장자
     # e : 끝
     
     # suffix를 지정하는 구간 (Reducing Mosic) 
@@ -45,7 +45,6 @@ def extract_perpect(input_string):
     else:       
         matches =       extract_modelnumber(input_string)           # matches를 extract하는 함수 (fc2가 아닐 경우)
     # e : 끝
-    
     
     # file_extension를 지정하는 구간 (확장자)
     file_extension =    extract_fileextension(input_string)         # 확장자를 extract하는 함수
